@@ -1,0 +1,38 @@
+<div class="container mt-2">
+  <ng-container *ngIf="notes ;else erreurOrLoding">
+    <div class="card" >
+      <div class="card-header"> Notes </div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>APOGEE</th> <th>NOM</th> <th>PRENOM</th><th>NOTE</th><th>Module</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let note of notes">
+            <td>{{note.student.apogee}}</td>
+            <td>{{note.student.nom}}</td>
+            <td>{{note.student.prenom}}</td>
+            <td>{{note.note}}</td>
+            <td>{{note.module.name}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #erreurOrLoding >
+    <ng-container *ngIf="errorMessage ; else loding">
+      <div class="text-danger">
+        {{errorMessage | json}}
+      </div>
+    </ng-container>
+   <ng-template #loding>
+     Londing ........
+   </ng-template>
+
+  </ng-template>
+
+
+</div>
