@@ -1,0 +1,32 @@
+<!-- Grey with black text -->
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+  <div class="container-fluid">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Active</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Les Etudiants</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Gestion Des Notes</a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" routerLink="/notes">Liste Notes</a></li>
+          <li><a class="dropdown-item" routerLink="/addNote">Ajouter Note</a></li>
+          <li><a class="dropdown-item" href="#">Modifier Note</a></li>
+        </ul>
+      </li>
+    </ul>
+    <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit" >Search</button>
+    </form>
+  </div>
+</nav>
