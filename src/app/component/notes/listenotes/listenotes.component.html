@@ -1,7 +1,20 @@
+
 <div class="container mt-2">
   <ng-container *ngIf="notes ;else erreurOrLoding">
+    <div *ngIf="NoteByFiliereAndModuleForm" class="mb-lg-2">
+      <form [formGroup]="NoteByFiliereAndModuleForm" (ngSubmit)="searchNoteByFiliereAndModule()" >
+        <div class="input-group">
+          <label class="input-group-text"> IDFiliere :</label>
+          <input type="text" formControlName="idFiliere" class="form-control">
+          <label class="input-group-text"> IDModule :</label>
+          <input type="text" formControlName="idModule" class="form-control">
+          <button class="btn btn-info">Search</button>
+        </div>
+      </form>
+    </div>
     <div class="card" >
-      <div class="card-header"> Notes </div>
+
+      <div class="card-header"> Notes : <strong>Filiere :</strong> {{filiereName}} &nbsp;&nbsp;<strong>Module :</strong> {{moduleName}} </div>
       <div class="card-body">
         <table class="table">
           <thead>

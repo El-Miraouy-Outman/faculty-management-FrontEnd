@@ -3,9 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {ListenotesComponent} from "./component/notes/listenotes/listenotes.component";
 
 const routes: Routes = [
-  {
-    path: "notes",component :ListenotesComponent
-  }
+  {path: "notes",component :ListenotesComponent}
 ];
 
 @NgModule({
