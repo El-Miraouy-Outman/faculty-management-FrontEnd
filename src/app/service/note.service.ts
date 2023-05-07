@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Note} from "../Model/note.model";
 import {environment} from "../../environments/environment";
+import {NoteRequest} from "../Model/noteRequest.model";
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,8 @@ export class NoteService {
     return this.http.get<Array<Note>>(`${environment.apiNote}/filieres/${apogee}/modules/${idModule}`);
 
   }
-
+ public saveNote(note:NoteRequest):Observable<Note>{
+    console.log(environment.apiNote)
+    return this.http.post<Note>(`${environment.apiNote}`,note);
+ }
 }
