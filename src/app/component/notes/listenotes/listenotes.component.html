@@ -1,18 +1,19 @@
 
 <div class="container mt-2">
-  <ng-container *ngIf="notes ;else erreurOrLoding">
+  <ng-container *ngIf="notes || optionsFiliere;else erreurOrLoding">
     <div *ngIf="NoteByFiliereAndModuleForm" class="mb-lg-2">
-      <form [formGroup]="NoteByFiliereAndModuleForm" (ngSubmit)="searchNoteByFiliereAndModule()" >
-        <div class="input-group">
-          <label class="input-group-text"> IDFiliere :</label>
-          <input type="text" formControlName="idFiliere" class="form-control">
-          <label class="input-group-text"> IDModule :</label>
-          <input type="text" formControlName="idModule" class="form-control">
-          <button class="btn btn-info">
-            <i class="bi bi-search"></i>
-          </button>
+        <div class="row">
+          <div class="col">
+            <select   class="form-select" [ngModel]="selectedF" (ngModelChange)="onFiliereChange($event)">
+              <option *ngFor="let optionF of optionsFiliere" [ngValue]="optionF">{{ optionF.name }}</option>
+            </select>
+          </div>
+          <div class="col">
+            <select  class="form-select"  [ngModel]="selectedM"  (ngModelChange)="onModuleChange($event)">
+              <option  *ngFor="let optionM of optionsModules" [ngValue]="optionM">{{ optionM.name }}</option>
+            </select>
+          </div>
         </div>
-      </form>
     </div>
     <div class="card" >
 
@@ -24,7 +25,7 @@
             <th>APOGEE</th> <th>NOM</th> <th>PRENOM</th><th>NOTE</th><th>Module</th>
           </tr>
           </thead>
-          <tbody>
+          <tbody *ngIf="selectedM">
           <tr *ngFor="let note of notes">
             <td>{{note.student.apogee}}</td>
             <td>{{note.student.nom}}</td>
