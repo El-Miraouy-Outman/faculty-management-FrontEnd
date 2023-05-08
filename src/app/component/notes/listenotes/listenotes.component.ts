@@ -37,35 +37,18 @@ export class ListenotesComponent implements OnInit{
         idModule : this.fb.control("")
       });
 
-
-   // this.noteService.getNotes().subscribe({
-     //   next : (data)=>{
-        //  console.log(data)
-        //  this.notes=data;
-         // this.filiereName=data[0].student.filiere.name;
-         // this.moduleName=data[0].module.name;
-      //  },
-     //   error : err => {
-          //this.errorMessage=err.message;
-         // console.log("pas de donne");
-     //   }
-    //  });
-
   }
   searchNoteByFiliereAndModule() {
-    console.log(this.selectedM)
-    let filiereStudentSearch=1
+    let filiereStudentSearch=this.selectedF.id
     let idModuleSearch=this.selectedM.id;
     this.noteService.searchNoteByApAndModule(filiereStudentSearch,idModuleSearch).subscribe({
       next : (data)=>{
         this.notes=data;
-        console.log(data);
         this.filiereName=this.selectedF.name;
         this.moduleName=this.selectedM.name;
       },
       error : err => {
         this.errorMessage=err.message;
-        console.log("pas de donne");
       }
     });
 
@@ -74,7 +57,7 @@ export class ListenotesComponent implements OnInit{
 
   onFiliereChange(selectedFiliere: any) {
     this.selectedF=selectedFiliere
-    this.optionsModules=selectedFiliere['modules']
+    this.optionsModules=this.selectedF['modules']
   }
 
   onModuleChange(selectedModule: any) {
