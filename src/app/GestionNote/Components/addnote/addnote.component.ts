@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {NoteRequest} from "../../../Model/noteRequest.model";
-import {NoteService} from "../../../services/noteService/note.service";
+import {NoteRequest} from "../../Model/noteRequest.model";
+import {NoteService} from "../../services/noteService/note.service";
 
 @Component({
   selector: 'app-addnote',

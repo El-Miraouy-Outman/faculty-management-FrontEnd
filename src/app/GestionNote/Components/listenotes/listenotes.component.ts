@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {NoteService} from "../../../services/noteService/note.service";
-import {Note} from "../../../Model/note.model";
+import {NoteService} from "../../services/noteService/note.service";
+import {Note} from "../../Model/note.model";
 import {Observable} from "rxjs";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {FiliereService} from "../../../services/filiereService/filiere.service";
-import {Filiere} from "../../../Model/filiere.model";
-import {ModuleService} from "../../../services/moduleService/module.service";
-import {Module} from "../../../Model/module.model";
+import {FiliereService} from "../../services/filiereService/filiere.service";
+import {Filiere} from "../../Model/filiere.model";
+import {ModuleService} from "../../services/moduleService/module.service";
+import {Module} from "../../Model/module.model";
 
 
 

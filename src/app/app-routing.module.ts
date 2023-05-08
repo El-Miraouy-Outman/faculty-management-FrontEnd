@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {ListenotesComponent} from "./component/notes/listenotes/listenotes.component";
-import {AddnoteComponent} from "./component/notes/addnote/addnote.component";
+import {ListenotesComponent} from "./GestionNote/Components/listenotes/listenotes.component";
+import {AddnoteComponent} from "./GestionNote/Components/addnote/addnote.component";
 
 
 const routes: Routes = [
