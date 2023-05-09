@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {NoteRequest} from "../../Model/noteRequest.model";
 import {NoteService} from "../../services/note.service";
+import {MdbModalRef} from "mdb-angular-ui-kit/modal";
 
 @Component({
   selector: 'app-addnote',
@@ -11,7 +12,7 @@ import {NoteService} from "../../services/note.service";
 export class AddnoteComponent implements OnInit{
 
   newNoteForm! : FormGroup;
-  constructor(private fb: FormBuilder,private servicenote:NoteService) {
+  constructor(private fb: FormBuilder,private servicenote:NoteService,public modalRef: MdbModalRef<AddnoteComponent>) {
   }
   ngOnInit(): void {
     this.newNoteForm=this.fb.group({
@@ -26,10 +27,10 @@ export class AddnoteComponent implements OnInit{
     console.log(note);
     this.servicenote.saveNote(note).subscribe({
       next: data =>{
-        alert("note est enregistrer");
+        this.modalRef.close()
       },
       error :err => {
-        console.log("note n' est pas ajouter");
+        console.log(err);
       }
     });
   }
