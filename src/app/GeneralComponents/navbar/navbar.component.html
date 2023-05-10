@@ -8,8 +8,13 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Home</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Les Etudiants</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"> Gestion des etudiants</a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" routerLink="/etudiants"><i class="bi bi-people"> </i> La liste des etudiants</a></li>
+          <li><a class="dropdown-item" routerLink="/filieres"><i class="bi bi-caret-down-square"> </i> La liste des filieres</a></li>
+          <li><a class="dropdown-item" routerLink="/modules"><i class="bi bi-list"> </i> La liste des modules</a></li>
+        </ul>
       </li>
 
       <li class="nav-item">

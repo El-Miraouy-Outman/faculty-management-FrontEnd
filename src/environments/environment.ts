@@ -3,4 +3,5 @@ export  const environment = {
   apiNote : "http://localhost:8100/api/notes",
   apiFiliere:"http://localhost:8081/api/filieres",
   apiModule:"http://localhost:8081/api/moduleFs",
+  apiStudent:"http://localhost:8081/api/students"
 };
