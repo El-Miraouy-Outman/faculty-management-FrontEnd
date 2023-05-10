@@ -22,16 +22,21 @@
         <table class="table">
           <thead>
           <tr>
-            <th>APOGEE</th> <th>NOM</th> <th>PRENOM</th><th>NOTE</th><th>Module</th>
+            <th>APOGEE</th> <th>NOM</th> <th>PRENOM</th><th>NOTE</th><th>Module</th><th>Update</th>
           </tr>
           </thead>
-          <tbody *ngIf="selectedM">
+          <tbody *ngIf="selectedM" >
           <tr *ngFor="let note of notes">
             <td>{{note.student.apogee}}</td>
             <td>{{note.student.nom}}</td>
             <td>{{note.student.prenom}}</td>
             <td>{{note.note}}</td>
             <td>{{note.module.name}}</td>
+            <td>
+            <button class=" btn btn-primary bg-primary" (click)="OnUpdateNote(note)">
+              <span class="fa fa-edit"></span>
+            </button>
+          </td>
           </tr>
           </tbody>
         </table>

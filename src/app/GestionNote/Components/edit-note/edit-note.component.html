@@ -1,0 +1,31 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">Update Note</h5>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    ></button>
+</div>
+<div class="container">
+  <div class="card-body">
+    <form [formGroup]="newNoteForm" (ngSubmit)="UpdateNote()">
+      <div class="mb-3">
+        <label class="form-label"> Apogee :</label>
+        <input  type="text" formControlName="apogee" class="form-control " readonly>
+      </div>
+      <div class="mb-3">
+        <label class="form-label"> IdModule :</label>
+        <!-- Display module name -->
+        <input type="text" [value]="module.name" class="form-control" readonly />
+        <!-- Hidden field for module ID -->
+        <input type="hidden" formControlName="idModule" [value]="module.id" />
+      </div>
+      <div class="mb-3">
+        <label class="form-label"> Note :</label>
+        <input type="text" formControlName="note" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">Update Note</button>
+    </form>
+  </div>
+</div>
+

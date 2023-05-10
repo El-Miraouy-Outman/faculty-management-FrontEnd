@@ -14,14 +14,17 @@ export class NoteService {
       return this.http.get<Array<Note>>(`${environment.apiNote}/filieres/1/modules/1`)
 
   }
-  public searchNoteByApAndModule(apogee: number, idModule: number): Observable<Array<Note>> {
-    console.log(apogee+"   "+idModule)
-    return this.http.get<Array<Note>>(`${environment.apiNote}/filieres/${apogee}/modules/${idModule}`);
+  public searchNoteByApAndModule(idFliere: number, idModule: number): Observable<Array<Note>> {
+    return this.http.get<Array<Note>>(`${environment.apiNote}/filieres/${idFliere}/modules/${idModule}`);
 
   }
   public saveNote(note:NoteRequest):Observable<Note>{
-    console.log(environment.apiNote)
     return this.http.post<Note>(`${environment.apiNote}`,note);
+  }
+
+  public  UpdateNote(note:NoteRequest):Observable<Note>{
+    console.log(note)
+    return this.http.put<Note>(`${environment.apiNote}/students/${note.apogee}/modules/${note.idModule}`,note);
   }
 
 }

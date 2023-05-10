@@ -1,4 +1,4 @@
-import {APP_INITIALIZER, NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +25,9 @@ import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { PopupMsgComponent } from './GeneralComponents/popupComponenets/popup-msg/popup-msg.component';
+import {EditNoteComponent} from "./GestionNote/Components/edit-note/edit-note.component";
+
 import { StudentsComponent } from './GestionStudent/Components/students/students.component';
 import { FilieresComponent } from './GestionStudent/Components/filieres/filieres.component';
 import { ModulesComponent } from './GestionStudent/Components/modules/modules.component';
@@ -51,6 +54,8 @@ export  function kcFactory( keycloakService:KeycloakService){
     AddnoteComponent,
     ListenotesComponent,
     NavbarComponent,
+    PopupMsgComponent,
+    EditNoteComponent,
     StudentsComponent,
     FilieresComponent,
     ModulesComponent,

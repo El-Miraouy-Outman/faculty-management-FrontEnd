@@ -1,5 +1,5 @@
 export class NoteRequest {
-  private note! : number ;
-  private apogee! : number;
-  private idModule! :number
+   note! : number ;
+  apogee! : number;
+  idModule! :number
 }
