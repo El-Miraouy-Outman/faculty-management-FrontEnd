@@ -25,6 +25,9 @@ import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { StudentsComponent } from './GestionStudent/Components/students/students.component';
+import { FilieresComponent } from './GestionStudent/Components/filieres/filieres.component';
+import { ModulesComponent } from './GestionStudent/Components/modules/modules.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,9 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
     AddnoteComponent,
     ListenotesComponent,
     NavbarComponent,
+    StudentsComponent,
+    FilieresComponent,
+    ModulesComponent,
   ],
   imports: [
     BrowserModule,
