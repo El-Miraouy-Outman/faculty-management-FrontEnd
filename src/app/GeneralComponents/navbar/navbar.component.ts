@@ -13,8 +13,6 @@ export class NavbarComponent {
   modalRef: MdbModalRef<any> | null = null;
   modalAlertRef: MdbModalRef<any> | null = null;
 
-  constructor(private modalService: MdbModalService) {}
-  modalRef: MdbModalRef<AddnoteComponent> | null = null;
   constructor(public  securityService: SecurityService,private modalService: MdbModalService) {}
 
   openModal() {
