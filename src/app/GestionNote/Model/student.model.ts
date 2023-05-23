@@ -6,5 +6,5 @@ export interface Student {
   nom: string;
   prenom: string;
   cne: string;
-  filiere: Filiere;
+  filier: Filiere;
 }

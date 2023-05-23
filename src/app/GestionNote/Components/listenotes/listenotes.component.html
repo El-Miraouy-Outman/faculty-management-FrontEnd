@@ -13,6 +13,13 @@
               <option  *ngFor="let optionM of optionsModules" [ngValue]="optionM">{{ optionM.name }}</option>
             </select>
           </div>
+          <div class="col">
+              <div class="btn btn-info" *ngIf=" optionsFiliere && optionsFiliere.length!==0
+                   && optionsModules && optionsModules.length!==0 && selectedM"
+               (click)="openAddNote()">
+                <span>Add New Note</span>
+              </div>
+          </div>
         </div>
     </div>
     <div class="card" >
@@ -22,7 +29,7 @@
         <table class="table">
           <thead>
           <tr>
-            <th>APOGEE</th> <th>NOM</th> <th>PRENOM</th><th>NOTE</th><th>Module</th><th>Update</th>
+            <th>APOGEE</th> <th>NOM</th> <th>PRENOM</th><th>NOTE</th><th>Module</th><th>Update</th><th>Remove</th>
           </tr>
           </thead>
           <tbody *ngIf="selectedM" >
@@ -35,6 +42,11 @@
             <td>
             <button class=" btn btn-primary bg-primary" (click)="OnUpdateNote(note)">
               <span class="fa fa-edit"></span>
+            </button>
+          </td>
+            <td>
+            <button class=" btn btn-danger bg-danger" (click)="OnDeleteNote(note)">
+              <span class="bi bi-trash-fill"></span>
             </button>
           </td>
           </tr>

@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {MdbModalRef} from "mdb-angular-ui-kit/modal";
 
 @Component({
   selector: 'app-popup-msg',
@@ -7,10 +8,14 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class PopupMsgComponent  implements OnInit{
   @Input() title: string | null = null;
-  constructor() {
+  constructor(public Modal:MdbModalRef<PopupMsgComponent>) {
   }
 
   ngOnInit(): void {
+    console.log(this.title)
   }
 
+  onclose() {
+    this.Modal.close(this.title)
+  }
 }

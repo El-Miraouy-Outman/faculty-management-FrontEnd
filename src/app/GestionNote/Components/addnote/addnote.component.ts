@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {NoteRequest} from "../../Model/noteRequest.model";
 import {NoteService} from "../../services/note.service";
-import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
-import {PopupMsgComponent} from "../../../GeneralComponents/popupComponenets/popup-msg/popup-msg.component";
+import {MdbModalRef} from "mdb-angular-ui-kit/modal";
+import {Module} from "../../Model/module.model";
 
 @Component({
   selector: 'app-addnote',
@@ -13,6 +13,7 @@ import {PopupMsgComponent} from "../../../GeneralComponents/popupComponenets/pop
 export class AddnoteComponent implements OnInit{
 
   newNoteForm! : FormGroup;
+  @Input() module!:Module
 
   constructor(private fb: FormBuilder,
               private servicenote:NoteService,
@@ -22,7 +23,7 @@ export class AddnoteComponent implements OnInit{
   ngOnInit(): void {
     this.newNoteForm=this.fb.group({
        note : this.fb.control("0"),
-       idModule : this.fb.control("0"),
+       idModule : this.fb.control(this.module.id),
        apogee : this.fb.control("0")
     })
   }
@@ -32,10 +33,13 @@ export class AddnoteComponent implements OnInit{
     console.log(note);
     this.servicenote.saveNote(note).subscribe({
       next: data =>{
+        this.servicenote.emitNoteData(data)
         this.modalRefAdd.close("success")
+
       },
       error :err => {
-        this.modalRefAdd.close("Id Module or Id Student not exist")
+        console.log(err)
+        this.modalRefAdd.close(err.error["message"])
       }
     });
   }

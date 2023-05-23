@@ -12,32 +12,33 @@ import {PopupMsgComponent} from "../../../GeneralComponents/popupComponenets/pop
   templateUrl: './edit-note.component.html',
   styleUrls: ['./edit-note.component.css']
 })
-export class EditNoteComponent implements OnInit{
+export class EditNoteComponent implements OnInit {
   @Input() note!: Note
-  @Input() module!:Module
-  newNoteForm! : FormGroup;
-  constructor(private fb: FormBuilder,
-              private servicenote:NoteService,
-              private EditRef:MdbModalRef<EditNoteComponent>
+  @Input() module!: Module
+  newNoteForm!: FormGroup;
 
+  constructor(private fb: FormBuilder,
+              private servicenote: NoteService,
+              public EditRef: MdbModalRef<EditNoteComponent>
   ) {
   }
+
   ngOnInit(): void {
 
-    this.newNoteForm=this.fb.group({
-      note : this.fb.control(this.note.note),
-      idModule : this.fb.control(this.module.id),
-      apogee : this.fb.control(this.note.student.apogee)
+    this.newNoteForm = this.fb.group({
+      note: this.fb.control(this.note.note),
+      idModule: this.fb.control(this.module.id),
+      apogee: this.fb.control(this.note.student.apogee)
     })
   }
 
   UpdateNote() {
-    let note :NoteRequest=this.newNoteForm.value;
+    let note: NoteRequest = this.newNoteForm.value;
     this.servicenote.UpdateNote(note).subscribe({
-      next: data =>{
+      next: data => {
         this.EditRef.close("success")
       },
-      error :err => {
+      error: err => {
         this.EditRef.close("Echec")
       }
     });

@@ -9,6 +9,9 @@ import {Module} from "../../Model/module.model";
 import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
 import {EditNoteComponent} from "../edit-note/edit-note.component";
 import {PopupMsgComponent} from "../../../GeneralComponents/popupComponenets/popup-msg/popup-msg.component";
+import {AddnoteComponent} from "../addnote/addnote.component";
+import {NoteRequest} from "../../Model/noteRequest.model";
+import {Observable} from "rxjs";
 
 
 
@@ -30,7 +33,6 @@ export class ListenotesComponent implements OnInit{
   modalRef: MdbModalRef<any> | null = null;
   private modalAlertRef!: MdbModalRef<PopupMsgComponent>;
 
-
   constructor(private noteService:NoteService,
               private filiereService:FiliereService,
               private moduleService:ModuleService,
@@ -40,6 +42,9 @@ export class ListenotesComponent implements OnInit{
   ngOnInit(): void {
     this.filiereService.getFilieres().subscribe(data => {
       this.optionsFiliere = data;
+    });
+    this.noteService.note$.subscribe(note => {
+      this.notes.push(note)
     });
       this.NoteByFiliereAndModuleForm=this.fb.group({
         idFiliere : this.fb.control(""),
@@ -52,7 +57,6 @@ export class ListenotesComponent implements OnInit{
     let idModuleSearch=this.selectedM.id;
     this.noteService.searchNoteByApAndModule(filiereStudentSearch,idModuleSearch).subscribe({
       next : (data)=>{
-        console.log(data)
         this.notes=data;
         this.filiereName=this.selectedF.name;
         this.moduleName=this.selectedM.name;
@@ -71,7 +75,7 @@ export class ListenotesComponent implements OnInit{
   }
 
   onModuleChange(selectedModule: any) {
-      this.selectedM=selectedModule
+    this.selectedM=selectedModule
     this.searchNoteByFiliereAndModule()
   }
 
@@ -80,12 +84,41 @@ export class ListenotesComponent implements OnInit{
       data: {note: note, module: this.selectedM}
     });
     this.modalRef.onClose.subscribe((message: string) => {
+      this.searchNoteByFiliereAndModule()
       this.modalAlertRef = this.modalService.open(PopupMsgComponent, {
         data: { title: message }
       });
     });
+  }
 
-    this.searchNoteByFiliereAndModule()
+  openAddNote() {
+    this.modalRef = this.modalService.open(AddnoteComponent,{
+      data: { module: this.selectedM }
+    })
+    this.modalRef.onClose.subscribe((message: any) => {
+      this.modalAlertRef = this.modalService.open(PopupMsgComponent, {
+        data: { title: message }
+      });
+    });
+  }
+
+
+  OnDeleteNote(note: Note) {
+    this.noteService.deleteNote(note.student.apogee,this.selectedM.id).subscribe({
+      next: data => {
+        console.log(data["msg"])
+        this.notes=this.notes.filter(value => value!==note)
+       this.modalRef=this.modalService.open(PopupMsgComponent,{
+         data: { title: data["msg"] }
+       })
+        this.modalRef.onClose.subscribe(value => {
+          console.log(value)
+        })
+        },
+      error: err => {
+        console.log(err)
+      }
+    });
 
   }
 }

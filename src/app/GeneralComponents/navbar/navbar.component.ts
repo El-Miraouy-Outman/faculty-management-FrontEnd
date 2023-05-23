@@ -15,14 +15,7 @@ export class NavbarComponent {
 
   constructor(public  securityService: SecurityService,private modalService: MdbModalService) {}
 
-  openModal() {
-    this.modalRef = this.modalService.open(AddnoteComponent)
-    this.modalRef.onClose.subscribe((message: string) => {
-      this.modalAlertRef = this.modalService.open(PopupMsgComponent, {
-        data: { title: message }
-      });
-    });
-  }
+
 
   async  login() {
     console.log("heelo authh");
