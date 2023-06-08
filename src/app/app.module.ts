@@ -32,7 +32,6 @@ import { StudentsComponent } from './GestionStudent/Components/students/students
 import { FilieresComponent } from './GestionStudent/Components/filieres/filieres.component';
 import { ModulesComponent } from './GestionStudent/Components/modules/modules.component';
 import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
-import {ListeNoteEtudComponent} from "./GestionNote/Components/liste-note-etud/liste-note-etud.component";
 // declancher keyclock
 export  function kcFactory( keycloakService:KeycloakService){
   return ()=>{
@@ -60,7 +59,7 @@ export  function kcFactory( keycloakService:KeycloakService){
     StudentsComponent,
     FilieresComponent,
     ModulesComponent,
-    ListeNoteEtudComponent,
+    //ListeNoteEtudComponent,
   ],
   imports: [
     BrowserModule,

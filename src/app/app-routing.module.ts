@@ -4,7 +4,6 @@ import {ListenotesComponent} from "./GestionNote/Components/listenotes/listenote
 import {AddnoteComponent} from "./GestionNote/Components/addnote/addnote.component";
 import {StudentsComponent} from "./GestionStudent/Components/students/students.component";
 import {AuthGuard} from "./SecurityKeycloak/security.guard";
-import {ListeNoteEtudComponent} from "./GestionNote/Components/liste-note-etud/liste-note-etud.component";
 
 
 const routes: Routes = [
@@ -18,8 +17,6 @@ const routes: Routes = [
       roles :['ADMIN','USER']
     }*/
   },
-  {path: "notesEtd",component :ListeNoteEtudComponent
-  },
   {path : "etudiants", component : StudentsComponent}
 ];
 
@@ -27,4 +24,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {  }
