@@ -1,5 +1,6 @@
-import {APP_INITIALIZER, NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,41 +26,28 @@ import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { PopupMsgComponent } from './GeneralComponents/popupComponenets/popup-msg/popup-msg.component';
-import {EditNoteComponent} from "./GestionNote/Components/edit-note/edit-note.component";
-
 import { StudentsComponent } from './GestionStudent/Components/students/students.component';
 import { FilieresComponent } from './GestionStudent/Components/filieres/filieres.component';
 import { ModulesComponent } from './GestionStudent/Components/modules/modules.component';
-import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
-// declancher keyclock
-export  function kcFactory( keycloakService:KeycloakService){
-  return ()=>{
-    keycloakService.init({
-      config : {
-        realm : "note-realm",
-        clientId : "note-client",
-        url : "http://localhost:8080"
-      },
-      initOptions :{
-        onLoad : "check-sso",
-        checkLoginIframe : true
-      }
-    })
-  }
-}
+import {UniquePipe} from "./GestionStudent/Pipes/unique.pipe";
+import {PopupMsgComponent} from "./GeneralComponents/popupComponenets/popup-msg/popup-msg.component";
+import {EditNoteComponent} from "./GestionNote/Components/edit-note/edit-note.component";
+import {CdkDragPlaceholder} from "@angular/cdk/drag-drop";
+import { EditFiliereComponent } from './GestionStudent/Components/filieres/edit-filiere/edit-filiere.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     AddnoteComponent,
     ListenotesComponent,
     NavbarComponent,
-    PopupMsgComponent,
-    EditNoteComponent,
     StudentsComponent,
     FilieresComponent,
     ModulesComponent,
-    //ListeNoteEtudComponent,
+    UniquePipe,
+    PopupMsgComponent,
+    EditNoteComponent,
+    EditFiliereComponent
   ],
   imports: [
     BrowserModule,
@@ -84,13 +72,10 @@ export  function kcFactory( keycloakService:KeycloakService){
     MdbValidationModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
-    KeycloakAngularModule
+    MatDialogModule,
+    CdkDragPlaceholder
   ],
-  providers: [
-    {
-      provide : APP_INITIALIZER,deps : [KeycloakService],useFactory :kcFactory,multi:true
-    }
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,1 +1,53 @@
-<p>filieres works!</p>
+<div class="container mt-4">
+  <ng-container *ngIf="originalOptionsFiliere;else erreurOrLoding">
+    <div *ngIf="FiliereByDiplomatForm" class="mb-lg-2">
+      <div class="row">
+        <div class="col">
+          <select  class="form-select" [ngModel]="originalOptionsFiliere" (ngModelChange)="onFiliereChange($event)">
+            <option disabled selected value="">Choix de la filière</option>
+            <option *ngFor="let optionF of originalOptionsFiliere | unique : 'diplomat' "
+                    [ngValue]="optionF">{{ optionF.diplomat }}</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header"><strong>La liste des filieres : </strong>  &nbsp;&nbsp;</div>
+      <div class="card-body">
+        <table class="table !k-table-fixed">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th scope="col">Id</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Action</th>
+          </tr>
+          </thead>
+          <tbody *ngIf="selectedFiliere">
+          <tr *ngFor="let filiere of optionsFiliere">
+            <th scope="row">#</th>
+            <td>{{filiere.id}}</td>
+            <td>{{filiere.name}}</td>
+            <td>
+              <button class="btn btn-primary me-4" (click)="onEditFiliere(filiere)"><i class="bi bi-pencil-fill"></i></button>
+              <button class="btn btn-danger me-4" (click)="deleteFiliere(filiere.id)"><i class="bi bi-x-lg " ></i></button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #erreurOrLoding>
+    <ng-container *ngIf="errorMessage ; else loding">
+      <div class="text-danger">
+        {{errorMessage | json}}
+      </div>
+    </ng-container>
+    <ng-template #loding>
+      Londing ........
+    </ng-template>
+
+  </ng-template>
+</div>
