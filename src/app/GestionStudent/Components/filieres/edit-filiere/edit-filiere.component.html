@@ -1,0 +1,25 @@
+<div class="container" *ngIf="filiereFormGroup">
+  <form [formGroup]="filiereFormGroup">
+    <div class="form-group">
+      <label>ID : </label>
+      <input type="text"  class="form-control" formControlName="id">
+    </div>
+    <div class="form-group">
+      <label>Name : </label>
+      <input type="text" placeholder="name ..." class="form-control" formControlName="name"
+             [ngClass]="{'is-invalid' : submitted && filiereFormGroup.controls['name'].errors}">
+      <div *ngIf="filiereFormGroup.controls['name'].errors?.['required']" class="invalid-feedback">
+        <div *ngIf="filiereFormGroup.controls['name'].errors?.['required']">
+          Name is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Price : </label>
+      <input type="text" placeholder="price ..." class="form-control" formControlName="diplome">
+    </div>
+
+    <button class="btn btn-success" (click)="onEditFiliere()"><i class="fa fa-toggle-up"></i> Edit</button>
+  </form>
+</div>
