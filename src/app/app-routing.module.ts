@@ -10,6 +10,7 @@ import {EditFiliereComponent} from "./GestionStudent/Components/filieres/edit-fi
 import { InscriptionStudentsComponent } from './GestionInscription/Components/inscription-students/inscription-students.component';
 import { InscriptionComponent } from './GestionInscription/Components/inscription/inscription.component';
 import { ListeinscriptionComponent } from './GestionInscription/Components/listeinscription/listeinscription.component';
+import {ModulesComponent} from "./GestionStudent/Components/modules/modules.component";
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path: "listeinscription", component: ListeinscriptionComponent},
   {path: "inscription-students", component: InscriptionStudentsComponent},
   {path : "filieres", component : FilieresComponent},
+  {path : "modules", component : ModulesComponent},
   {path : "editFiliere/:id", component : EditFiliereComponent}
 
 ];
