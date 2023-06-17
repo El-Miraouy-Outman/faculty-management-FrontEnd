@@ -1,0 +1,39 @@
+<div class="container-fluid text-center py-4">
+  <h1>{{ filterTitle }}</h1>
+
+  <!-- Filter buttons -->
+  <div class="btn-group my-3">
+    <button type="button" class="btn btn-primary mx-1" (click)="filterInscriptions('MST')">MST</button>
+    <button type="button" class="btn btn-primary mx-1" (click)="filterInscriptions('LST')">LST</button>
+    <button type="button" class="btn btn-primary mx-1" (click)="filterInscriptions('DEUST')">DEUST</button>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>CIN</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Filière Bac</th>
+        <th>État d'Inscription</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let inscription of filteredInscriptions">
+        <td>{{ inscription.id }}</td>
+        <td>{{ inscription.cin }}</td>
+        <td>{{ inscription.nom }}</td>
+        <td>{{ inscription.prenom }}</td>
+        <td>{{ inscription.filiereBac }}</td>
+        <td>{{ getEtatInscription(inscription) }}</td>
+        <td>
+          <button type="button" class="btn btn-success mx-1" (click)="acceptInscription(inscription.id)">Accepter</button>
+          <button type="button" class="btn btn-danger mx-1" (click)="rejectInscription(inscription.id)">Refuser</button>
+          <button type="button" class="btn btn-warning mx-1" (click)="cancelInscription(inscription.id)">Annuler</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

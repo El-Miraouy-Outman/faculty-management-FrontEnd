@@ -1,0 +1,550 @@
+<div class="container mt-3">
+  <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="card p-2 border rounded-0 shadow-sm">
+        <form (ngSubmit)="submitForm()" class="container">
+          <h4
+            class="text-success font-weight-bold mb-4 mt-3 bg-secondary text-white p-2"
+          >
+            LES INFORMARTIONS PERSONNELLES
+          </h4>
+          <div class="form-group">
+            <label class="form-label mb-3" for="cin">CIN:</label>
+            <input
+              class="form-control form-control-lg"
+              type="text"
+              id="cin"
+              name="cin"
+              [(ngModel)]="inscription.cin"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mb-3" for="cne">CNE:</label>
+            <input
+              class="form-control form-control-lg"
+              type="text"
+              id="cne"
+              name="cne"
+              [(ngModel)]="inscription.cne"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mb-3" for="nom">Nom:</label>
+            <input
+              class="form-control form-control-lg"
+              type="text"
+              id="nom"
+              name="nom"
+              [(ngModel)]="inscription.nom"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mb-3" for="prenom">Prénom:</label>
+            <input
+              class="form-control form-control-lg"
+              type="text"
+              id="prenom"
+              name="prenom"
+              [(ngModel)]="inscription.prenom"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mb-3" for="genre">Genre:</label>
+            <select
+              class="form-control form-control-lg"
+              class="form-control form-control-lg"
+              id="genre"
+              name="genre"
+              [(ngModel)]="inscription.genre"
+              required
+            >
+              <option value="MALE">Masculin</option>
+              <option value="FEMALE">Féminin</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mb-3" for="email">Email:</label>
+            <input
+              class="form-control form-control-lg"
+              type="email"
+              id="email"
+              name="email"
+              [(ngModel)]="inscription.email"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mb-3" for="dateNaissance"
+              >Date de Naissance:</label
+            >
+            <input
+              class="form-control form-control-lg"
+              type="date"
+              id="dateNaissance"
+              name="dateNaissance"
+              [(ngModel)]="inscription.dateNaissance"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mb-3" for="lieuNaissance"
+              >Lieu de Naissance:</label
+            >
+            <input
+              class="form-control form-control-lg"
+              type="text"
+              id="lieuNaissance"
+              name="lieuNaissance"
+              [(ngModel)]="inscription.lieuNaissance"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mb-3" for="adresse">Adresse:</label>
+            <input
+              class="form-control form-control-lg"
+              type="text"
+              id="adresse"
+              name="adresse"
+              [(ngModel)]="inscription.adresse"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mb-3" for="telephone">Téléphone:</label>
+            <input
+              class="form-control form-control-lg"
+              type="tel"
+              id="telephone"
+              name="telephone"
+              [(ngModel)]="inscription.telephone"
+              required
+            />
+          </div>
+
+          <h4
+            class="text-success font-weight-bold mb-4 mt-3 bg-secondary text-white p-2"
+          >
+            LES INFORMARTIONS DU BACCALAUREAT
+          </h4>
+          <div class="form-group">
+            <label class="form-label mb-3" for="filiereBac"
+              >Filière du Baccalauréat:</label
+            >
+            <select
+              class="form-control form-control-lg"
+              id="filiereBac"
+              name="filiereBac"
+              [(ngModel)]="inscription.filiereBac"
+              required
+            >
+              <option value="SCIENCES_MATHS">Sciences Maths</option>
+              <option value="SCIENCES_EXP">Sciences Expérimentales</option>
+              <option value="SCIENCES_TECH">Sciences Techniques</option>
+              <option value="SCIENCES_ECO">Sciences Économiques</option>
+              <option value="SCIENCES_GESTION">Sciences de Gestion</option>
+              <option value="LETTRES">Lettres</option>
+              <option value="ARTS">Arts</option>
+              <option value="SPORT">Sport</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mb-3" for="moyenneBac"
+              >Moyenne du Baccalauréat:</label
+            >
+            <input
+              class="form-control form-control-lg"
+              type="number"
+              id="moyenneBac"
+              name="moyenneBac"
+              [(ngModel)]="inscription.moyenneBac"
+              required
+              min="0"
+              max="20"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mb-3" for="mentionBac"
+              >Mention du Baccalauréat:</label
+            >
+            <select
+              class="form-control form-control-lg"
+              id="mentionBac"
+              name="mentionBac"
+              [(ngModel)]="inscription.mentionBac"
+              required
+            >
+              <option value="TRES_BIEN">Très Bien</option>
+              <option value="BIEN">Bien</option>
+              <option value="ASSEZ_BIEN">Assez Bien</option>
+              <option value="PASSABLE">Passable</option>
+              <option value="INSUFFISANT">Insuffisant</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mb-3" for="anneeBac"
+              >Année du Baccalauréat:</label
+            >
+            <input
+              class="form-control form-control-lg"
+              type="text"
+              id="anneeBac"
+              name="anneeBac"
+              [(ngModel)]="inscription.anneeBac"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mb-3" for="etablissementBac"
+              >Établissement du Baccalauréat:</label
+            >
+            <input
+              class="form-control form-control-lg"
+              type="text"
+              id="etablissementBac"
+              name="etablissementBac"
+              [(ngModel)]="inscription.etablissementBac"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mb-3" for="villeBac"
+              >Ville du Baccalauréat:</label
+            >
+            <input
+              class="form-control form-control-lg"
+              type="text"
+              id="villeBac"
+              name="villeBac"
+              [(ngModel)]="inscription.villeBac"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mb-3" for="paysBac"
+              >Pays du Baccalauréat:</label
+            >
+            <input
+              class="form-control form-control-lg"
+              type="text"
+              id="paysBac"
+              name="paysBac"
+              [(ngModel)]="inscription.paysBac"
+              required
+            />
+          </div>
+
+          <h4
+            class="text-success font-weight-bold mb-4 mt-3 bg-secondary text-white p-2"
+          >
+            LES INFORMATIONS DU DIPLOME
+          </h4>
+          <div class="form-group">
+            <label class="form-label mb-3" for="diplomat">Diplôme:</label>
+            <select
+              class="form-control form-control-lg"
+              id="diplomat"
+              name="diplomat"
+              [(ngModel)]="inscription.diplomat"
+              required
+            >
+              <option value="DEUST">DEUST</option>
+              <option value="LST">LST</option>
+              <option value="MST">MST</option>
+            </select>
+          </div>
+
+          <h4
+            class="text-success font-weight-bold mb-4 mt-3 bg-secondary text-white p-2"
+          >
+            LES INFORMATIONS DU DIPLOME DEUST
+          </h4>
+          <div class="form-group">
+            <label class="form-label mb-3" for="diplomeDeust"
+              >Diplôme DEUST:</label
+            >
+            <select
+              class="form-control form-control-lg"
+              id="diplomeDeust"
+              name="diplomeDeust"
+              [(ngModel)]="inscription.diplomeDeust"
+              required
+            >
+              <option value="">Select a Diplôme DEUST</option>
+              <option value="MIP">Mathématiques Informatique Physique</option>
+              <option value="BCG">Biologie - Chimie - Géologie</option>
+              <option value="GE">Génie Electrique</option>
+              <option value="GM">Génie Mécanique</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mb-3" for="moyenneDiplome"
+              >Moyenne du Diplôme DEUST:</label
+            >
+            <input
+              class="form-control form-control-lg"
+              type="number"
+              id="moyenneDiplome"
+              min="0"
+              max="20"
+              name="moyenneDiplome"
+              [(ngModel)]="inscription.moyenneDiplome"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mb-3" for="mentionDiplome"
+              >Mention du Diplôme DEUST:</label
+            >
+            <select
+              class="form-control form-control-lg"
+              id="mentionDiplome"
+              name="mentionDiplome"
+              [(ngModel)]="inscription.mentionDiplome"
+            >
+              <option value="TRES_BIEN">Très Bien</option>
+              <option value="BIEN">Bien</option>
+              <option value="ASSEZ_BIEN">Assez Bien</option>
+              <option value="PASSABLE">Passable</option>
+              <option value="INSUFFISANT">Insuffisant</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mb-3" for="anneeDiplome"
+              >Année du Diplôme DEUST:</label
+            >
+            <input
+              class="form-control form-control-lg"
+              type="text"
+              id="anneeDiplome"
+              name="anneeDiplome"
+              [(ngModel)]="inscription.anneeDiplome"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mb-3" for="etablissementDiplome"
+              >Établissement du Diplôme DEUST:</label
+            >
+            <input
+              class="form-control form-control-lg"
+              type="text"
+              id="etablissementDiplome"
+              name="etablissementDiplome"
+              [(ngModel)]="inscription.etablissementDiplome"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mb-3" for="villeDiplome"
+              >Ville du Diplôme DEUST:</label
+            >
+            <input
+              class="form-control form-control-lg"
+              type="text"
+              id="villeDiplome"
+              name="villeDiplome"
+              [(ngModel)]="inscription.villeDiplome"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mb-3" for="paysDiplome"
+              >Pays du Diplôme DEUST:</label
+            >
+            <input
+              class="form-control form-control-lg"
+              type="text"
+              id="paysDiplome"
+              name="paysDiplome"
+              [(ngModel)]="inscription.paysDiplome"
+            />
+          </div>
+
+          <h4
+            class="text-success font-weight-bold mb-4 mt-3 bg-secondary text-white p-2"
+          >
+            LES INFORMARTIONS DE LA LICENCE
+          </h4>
+          <div class="form-group">
+            <label class="form-label mb-3" for="licence">Licence:</label>
+            <select
+              class="form-control form-control-lg"
+              id="licence"
+              name="licence"
+              [(ngModel)]="inscription.licence"
+              required
+            >
+              <option value="">Select a Licence</option>
+              <option value="GM">Génie Mathématique</option>
+              <option value="IET">
+                Ingénierie Electronique et Télécommunication
+              </option>
+              <option value="IIEA">
+                Ingénierie Informatique Electronique et Automatique
+              </option>
+              <option value="PE">Protection de l’environnement</option>
+              <option value="INFO">Informatique</option>
+              <option value="GAT">
+                Géomatique et Aménagement du Territoire
+              </option>
+              <option value="SBAB">
+                Sciences Biologiques Appliquées Biomédicale
+              </option>
+              <option value="TQPA">
+                Technologie et Qualité des Produits Agroalimentaires
+              </option>
+              <option value="CAOGCM">
+                Chimie Appliquée Option : Génie Chimie des Matériaux
+              </option>
+              <option value="CAOTACQ">
+                Chimie Appliquée Option : Techniques d’Analyses et Contrôle
+                Qualité
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mb-3" for="moyenneLicence"
+              >Moyenne de la Licence:</label
+            >
+            <input
+              class="form-control form-control-lg"
+              type="number"
+              id="moyenneLicence"
+              min="0"
+              max="20"
+              name="moyenneLicence"
+              [(ngModel)]="inscription.moyenneLicence"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mb-3" for="mentionLicence"
+              >Mention de la Licence:</label
+            >
+            <select
+              class="form-control form-control-lg"
+              id="mentionLicence"
+              name="mentionLicence"
+              [(ngModel)]="inscription.mentionLicence"
+            >
+              <option value="TRES_BIEN">Très Bien</option>
+              <option value="BIEN">Bien</option>
+              <option value="ASSEZ_BIEN">Assez Bien</option>
+              <option value="PASSABLE">Passable</option>
+              <option value="INSUFFISANT">Insuffisant</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mb-3" for="anneeLicence"
+              >Année de la Licence:</label
+            >
+            <input
+              class="form-control form-control-lg"
+              type="text"
+              id="anneeLicence"
+              name="anneeLicence"
+              [(ngModel)]="inscription.anneeLicence"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mb-3" for="etablissementLicence"
+              >Établissement de la Licence:</label
+            >
+            <input
+              class="form-control form-control-lg"
+              type="text"
+              id="etablissementLicence"
+              name="etablissementLicence"
+              [(ngModel)]="inscription.etablissementLicence"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mb-3" for="villeLicence"
+              >Ville de la Licence:</label
+            >
+            <input
+              class="form-control form-control-lg"
+              type="text"
+              id="villeLicence"
+              name="villeLicence"
+              [(ngModel)]="inscription.villeLicence"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mb-3" for="paysLicence"
+              >Pays de la Licence:</label
+            >
+            <input
+              class="form-control form-control-lg"
+              type="text"
+              id="paysLicence"
+              name="paysLicence"
+              [(ngModel)]="inscription.paysLicence"
+            />
+          </div>
+
+          <h4
+            class="text-success font-weight-bold mb-4 mt-3 bg-secondary text-white p-2"
+          >
+            La FILIERE
+          </h4>
+          <div class="form-group">
+            <label class="form-label mb-3" for="filiereId">Filière:</label>
+            <select
+              class="form-control form-control-lg"
+              id="filiereId"
+              name="filiereId"
+              [(ngModel)]="inscription.filiereId"
+              required
+            >
+              <option *ngFor="let filiere of filieres" [value]="filiere.id">
+                {{ filiere.name }}
+              </option>
+            </select>
+          </div>
+
+          <div class="d-flex justify-content-center">
+            <button
+              type="submit"
+              class="btn btn-secondary btn-block rounded-0 mt-4"
+            >
+              Enregistrer
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

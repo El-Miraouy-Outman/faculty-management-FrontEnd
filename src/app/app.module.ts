@@ -1,15 +1,17 @@
+<<<<<<< HEAD
 import { NgModule } from '@angular/core';
+=======
+import { APP_INITIALIZER, NgModule } from '@angular/core';
+>>>>>>> 7cbafb65d0e215c621a1f117c26d0a5ed6d37386
 import { BrowserModule } from '@angular/platform-browser';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { AddnoteComponent } from './GestionNote/Components/addnote/addnote.component';
-import { ListenotesComponent } from './GestionNote/Components/listenotes/listenotes.component';
-import {HttpClientModule} from "@angular/common/http";
-import { NavbarComponent } from './GeneralComponents/navbar/navbar.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
@@ -25,6 +27,7 @@ import { MdbScrollspyModule } from 'mdb-angular-ui-kit/scrollspy';
 import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
+<<<<<<< HEAD
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { StudentsComponent } from './GestionStudent/Components/students/students.component';
 import { FilieresComponent } from './GestionStudent/Components/filieres/filieres.component';
@@ -35,6 +38,38 @@ import {EditNoteComponent} from "./GestionNote/Components/edit-note/edit-note.co
 import {CdkDragPlaceholder} from "@angular/cdk/drag-drop";
 import { EditFiliereComponent } from './GestionStudent/Components/filieres/edit-filiere/edit-filiere.component';
 
+=======
+import { NavbarComponent } from './GeneralComponents/navbar/navbar.component';
+import { PopupMsgComponent } from './GeneralComponents/popupComponenets/popup-msg/popup-msg.component';
+import { AddnoteComponent } from './GestionNote/Components/addnote/addnote.component';
+import { EditNoteComponent } from "./GestionNote/Components/edit-note/edit-note.component";
+import { ListenotesComponent } from './GestionNote/Components/listenotes/listenotes.component';
+
+import { DatePipe } from '@angular/common';
+import { KeycloakAngularModule, KeycloakService } from "keycloak-angular";
+import { InscriptionComponent } from './GestionInscription/Components/inscription/inscription.component';
+import { ListeinscriptionComponent } from './GestionInscription/Components/listeinscription/listeinscription.component';
+import { FilieresComponent } from './GestionStudent/Components/filieres/filieres.component';
+import { ModulesComponent } from './GestionStudent/Components/modules/modules.component';
+import { StudentsComponent } from './GestionStudent/Components/students/students.component';
+import { InscriptionStudentsComponent } from './GestionInscription/Components/inscription-students/inscription-students.component';
+// declancher keyclock
+export  function kcFactory( keycloakService:KeycloakService){
+  return ()=>{
+    keycloakService.init({
+      config : {
+        realm : "note-realm",
+        clientId : "note-client",
+        url : "http://localhost:8080"
+      },
+      initOptions :{
+        onLoad : "check-sso",
+        checkLoginIframe : true
+      }
+    })
+  }
+}
+>>>>>>> 7cbafb65d0e215c621a1f117c26d0a5ed6d37386
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,10 +79,17 @@ import { EditFiliereComponent } from './GestionStudent/Components/filieres/edit-
     StudentsComponent,
     FilieresComponent,
     ModulesComponent,
+<<<<<<< HEAD
     UniquePipe,
     PopupMsgComponent,
     EditNoteComponent,
     EditFiliereComponent
+=======
+    InscriptionComponent,
+    ListeinscriptionComponent,
+    InscriptionStudentsComponent,
+    //ListeNoteEtudComponent,
+>>>>>>> 7cbafb65d0e215c621a1f117c26d0a5ed6d37386
   ],
   imports: [
     BrowserModule,
@@ -72,8 +114,18 @@ import { EditFiliereComponent } from './GestionStudent/Components/filieres/edit-
     MdbValidationModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
+<<<<<<< HEAD
     MatDialogModule,
     CdkDragPlaceholder
+=======
+    KeycloakAngularModule
+  ],
+  providers: [
+    {
+      provide : APP_INITIALIZER,deps : [KeycloakService],useFactory :kcFactory,multi:true
+    },
+    DatePipe
+>>>>>>> 7cbafb65d0e215c621a1f117c26d0a5ed6d37386
   ],
   providers: [],
   bootstrap: [AppComponent]
