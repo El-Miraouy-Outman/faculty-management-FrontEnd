@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
-import {AddnoteComponent} from "../../GestionNote/Components/addnote/addnote.component";
-import {PopupMsgComponent} from "../popupComponenets/popup-msg/popup-msg.component";
-import {SecurityService} from "../../SecurityKeycloak/ServiceSec/security.service";
+import { MdbModalRef, MdbModalService } from "mdb-angular-ui-kit/modal";
+import { SecurityService } from "../../SecurityKeycloak/ServiceSec/security.service";
 
 @Component({
   selector: 'navbar',
@@ -13,7 +11,7 @@ export class NavbarComponent {
   modalRef: MdbModalRef<any> | null = null;
   modalAlertRef: MdbModalRef<any> | null = null;
 
-  constructor(public  securityService: SecurityService,private modalService: MdbModalService) {}
+  constructor( public  securityService: SecurityService ,private modalService: MdbModalService) {}
 
 
 
@@ -28,3 +26,4 @@ export class NavbarComponent {
     this.securityService.kcService.logout(window.location.origin)
   }
 }
+

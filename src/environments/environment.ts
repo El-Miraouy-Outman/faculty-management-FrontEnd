@@ -1,7 +1,10 @@
 export  const environment = {
   production :false,
-  apiNote : "http://localhost:8100/api/notes",
+  apiNote : "http://localhost:8085/api/notes",
   apiFiliere:"http://localhost:8081/api/filieres",
   apiModule:"http://localhost:8081/api/moduleFs",
-  apiStudent:"http://localhost:8081/api/students"
+  apiStudent:"http://localhost:8083/api/students",
+  apiInscription : "http://localhost:8084/api/v1/inscription",
 };
+
+

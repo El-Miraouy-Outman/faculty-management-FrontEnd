@@ -40,3 +40,4 @@ export class AuthGuard extends KeycloakAuthGuard {
     return requiredRoles.every((role) => this.roles.includes(role));
   }
 }
+
