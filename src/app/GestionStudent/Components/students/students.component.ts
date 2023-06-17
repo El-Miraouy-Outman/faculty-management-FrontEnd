@@ -11,8 +11,6 @@ import { Student1 } from '../../Models/student1';
 })
 export class StudentsComponent implements OnInit {
 
-
-
   students: Student1[] =[];
   constructor(private studentService:StudentServicesService ){}
   ngOnInit(): void {

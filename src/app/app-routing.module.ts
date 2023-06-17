@@ -10,14 +10,10 @@ import {EditFiliereComponent} from "./GestionStudent/Components/filieres/edit-fi
 import { InscriptionStudentsComponent } from './GestionInscription/Components/inscription-students/inscription-students.component';
 import { InscriptionComponent } from './GestionInscription/Components/inscription/inscription.component';
 import { ListeinscriptionComponent } from './GestionInscription/Components/listeinscription/listeinscription.component';
-import { AddnoteComponent } from "./GestionNote/Components/addnote/addnote.component";
-import { ListenotesComponent } from "./GestionNote/Components/listenotes/listenotes.component";
-import { StudentsComponent } from "./GestionStudent/Components/students/students.component";
-import { UpdateStudentComponent } from './GestionStudent/Components/students/update-student/update-student/update-student.component';
+import {ModulesComponent} from "./GestionStudent/Components/modules/modules.component";
 
 
 const routes: Routes = [
-  { path:'update-student/:id', component:UpdateStudentComponent},
   {path: "notes",component :ListenotesComponent
     /*, canActivate : [AuthGuard],data : {
       roles :['USER','ADMIN']

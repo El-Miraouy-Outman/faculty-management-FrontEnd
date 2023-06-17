@@ -7,6 +7,7 @@
             <select   class="form-select" [ngModel]="selectedF" (ngModelChange)="onFiliereChange($event)">
               <option *ngFor="let optionF of optionsFiliere" [ngValue]="optionF">{{ optionF.name }}</option>
             </select>
+
           </div>
           <div class="col">
             <select  class="form-select"  [ngModel]="selectedM"  (ngModelChange)="onModuleChange($event)">

@@ -10,10 +10,6 @@ import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
 import {EditNoteComponent} from "../edit-note/edit-note.component";
 import {PopupMsgComponent} from "../../../GeneralComponents/popupComponenets/popup-msg/popup-msg.component";
 import {AddnoteComponent} from "../addnote/addnote.component";
-import {NoteRequest} from "../../Model/noteRequest.model";
-import {Observable} from "rxjs";
-
-
 
 @Component({
   selector: 'app-listenotes',
@@ -67,7 +63,6 @@ export class ListenotesComponent implements OnInit{
     });
 
   }
-
 
   onFiliereChange(selectedFiliere: any) {
     this.selectedF=selectedFiliere
