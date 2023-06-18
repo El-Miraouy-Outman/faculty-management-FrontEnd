@@ -1,1 +1,54 @@
-<p>modules works!</p>
+<div class="container mt-4">
+    <ng-container *ngIf="originalOptionsFiliere;else erreurOrLoding">
+      <div *ngIf="ModuleByFiliereForm" class="mb-lg-2">
+        <div class="row">
+          <div class="col">
+            <select  class="form-select" [ngModel]="originalOptionsFiliere" (ngModelChange)="onFiliereChange($event)">
+              <option disabled selected value="">Choix de la filière</option>
+              <option *ngFor="let optionF of originalOptionsFiliere | unique :'filiere' "
+                      [ngValue]="optionF">{{ optionF.name }}</option>
+            </select>
+          </div>
+  
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><strong>La liste des modules : </strong>  &nbsp;&nbsp;</div>
+        <div class="card-body">
+          <table class="table !k-table-fixed">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th scope="col">Id</th>
+              <th scope="col">Nom</th>
+              <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody *ngIf="selectedFiliere">
+            <tr *ngFor="let module of optionsModule">
+              <th scope="row">#</th>
+              <td>{{module.id}}</td>
+              <td>{{module.name}}</td>
+              <td>
+                <button class="btn btn-warning me-4" ><i class="fa fa-pencil"></i></button>
+                <button class="btn btn-danger me-4" ><i class="bi bi-x-lg " ></i></button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #erreurOrLoding>
+      <ng-container *ngIf="errorMessage ; else loding">
+        <div class="text-danger">
+          {{errorMessage | json}}
+        </div>
+      </ng-container>
+      <ng-template #loding>
+        Londing ........
+      </ng-template>
+  
+    </ng-template>
+  </div>
+  

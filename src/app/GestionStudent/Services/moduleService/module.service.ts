@@ -13,6 +13,11 @@ export class ModuleService {
   public  GetModules():Observable<Array<Module>>{
     return this.http.get<Array<Module>>(environment.apiModule);
   }
+
+  public  GetModulesByFiliere(id: number):Observable<Array<Module>>{
+    console.log(id)
+    return this.http.get<Array<Module>>(`${environment.apiModule}/getModuleByFiliere/${id}`);  }
+
 }
 
 
