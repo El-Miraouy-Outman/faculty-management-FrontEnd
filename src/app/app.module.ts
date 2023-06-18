@@ -41,6 +41,7 @@ import { KeycloakAngularModule, KeycloakService } from "keycloak-angular";
 import { InscriptionComponent } from './GestionInscription/Components/inscription/inscription.component';
 import { ListeinscriptionComponent } from './GestionInscription/Components/listeinscription/listeinscription.component';
 import { InscriptionStudentsComponent } from './GestionInscription/Components/inscription-students/inscription-students.component';
+import { EditModuleComponent } from './GestionStudent/Components/modules/edit-module/edit-module.component';
 // declancher keyclock
 export  function kcFactory( keycloakService:KeycloakService){
   return ()=>{
@@ -75,6 +76,7 @@ export  function kcFactory( keycloakService:KeycloakService){
     InscriptionComponent,
     ListeinscriptionComponent,
     InscriptionStudentsComponent,
+    EditModuleComponent,
 
     //ListeNoteEtudComponent,
 

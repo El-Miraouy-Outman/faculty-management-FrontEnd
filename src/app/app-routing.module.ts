@@ -11,6 +11,7 @@ import { InscriptionStudentsComponent } from './GestionInscription/Components/in
 import { InscriptionComponent } from './GestionInscription/Components/inscription/inscription.component';
 import { ListeinscriptionComponent } from './GestionInscription/Components/listeinscription/listeinscription.component';
 import {ModulesComponent} from "./GestionStudent/Components/modules/modules.component";
+import {EditModuleComponent} from "./GestionStudent/Components/modules/edit-module/edit-module.component";
 
 
 const routes: Routes = [
@@ -30,7 +31,8 @@ const routes: Routes = [
   {path: "inscription-students", component: InscriptionStudentsComponent},
   {path : "filieres", component : FilieresComponent},
   {path : "modules", component : ModulesComponent},
-  {path : "editFiliere/:id", component : EditFiliereComponent}
+  {path : "editFiliere/:id", component : EditFiliereComponent},
+  {path : "editModule/:id", component : EditModuleComponent}
 
 ];
 

@@ -81,20 +81,14 @@ export class ModulesComponent implements OnInit  {
     }
   }
 
-/*
-
-  updateFiliere(id : number){
 
 
-    //this.filiereService.updateFiliere(id,this.selectedFiliere)
 
+
+
+
+  onEditModule(module: Module) {
+    this.router.navigateByUrl("/editModule/"+module.id);
   }
 
-
-
-  onEditFiliere(filiere: Filiere) {
-    this.router.navigateByUrl("/editFiliere/"+filiere.id);
-  }
-}
-*/
 }
