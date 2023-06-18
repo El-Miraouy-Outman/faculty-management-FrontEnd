@@ -34,7 +34,6 @@ export class ModulesComponent implements OnInit  {
   ngOnInit(): void {
     this.filiereService.getFilieres().subscribe(
       data => {
-        console.log(data)
         this.originalOptionsFiliere = data;
       });
 
@@ -48,11 +47,11 @@ export class ModulesComponent implements OnInit  {
 
 
   searchModuleByFiliere() {
-    this.moduleService.GetModulesByFiliere(this.selectedModule.idFiliere).subscribe({
+    let id = this.selectedFiliere.id;
+    this.moduleService.GetModulesByFiliere(id).subscribe({
       next: (data) => {
         console.log("here our data ----------"+data)
         this.optionsModule = data;
-        this.moduleName = this.selectedModule.name;
       },
       error: err => {
         this.errorMessage = err.message;
@@ -66,21 +65,23 @@ export class ModulesComponent implements OnInit  {
     this.searchModuleByFiliere()
   }
 
-/*
-  deleteFiliere(id: number) {
-    const confirmed = confirm('Vous voulez supprimer cette Filiere?');
+
+
+  ondeleteModule(id: number) {
+    const confirmed = confirm('Vous voulez supprimer ce module?');
     if (confirmed) {
-      this.filiereService.deleteFiliere(id)
+      this.moduleService.deleteModule(id)
         .subscribe({
           next: value => {
             alert('Filiere supprimé !!');
-            this.searchFiliereByDiplomat();
+            this.searchModuleByFiliere();
           },
           error: console.log
         });
     }
   }
 
+/*
 
   updateFiliere(id : number){
 

@@ -15,8 +15,14 @@ export class ModuleService {
   }
 
   public  GetModulesByFiliere(id: number):Observable<Array<Module>>{
-    console.log(id)
-    return this.http.get<Array<Module>>(`${environment.apiModule}/getModuleByFiliere/${id}`);  }
+    return this.http.get<Array<Module>>(`${environment.apiModule}/getModuleByFiliere/${id}`);
+    console.log("here is me in the module service !!!");
+  }
+
+  public deleteModule(id : number) : Observable<any> {
+    return this.http.delete(`${environment.apiModule}/${id}`);
+
+  }
 
 }
 
