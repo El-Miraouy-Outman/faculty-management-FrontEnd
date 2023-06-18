@@ -12,6 +12,7 @@ import { InscriptionComponent } from './GestionInscription/Components/inscriptio
 import { ListeinscriptionComponent } from './GestionInscription/Components/listeinscription/listeinscription.component';
 import {ModulesComponent} from "./GestionStudent/Components/modules/modules.component";
 import {EditModuleComponent} from "./GestionStudent/Components/modules/edit-module/edit-module.component";
+import {ListeNoteEtudComponent} from "./GestionNote/Components/liste-note-etud/liste-note-etud.component";
 
 
 const routes: Routes = [
@@ -32,7 +33,8 @@ const routes: Routes = [
   {path : "filieres", component : FilieresComponent},
   {path : "modules", component : ModulesComponent},
   {path : "editFiliere/:id", component : EditFiliereComponent},
-  {path : "editModule/:id", component : EditModuleComponent}
+  {path : "editModule/:id", component : EditModuleComponent},
+  {path: "notesEtd",component : ListeNoteEtudComponent}
 
 ];
 

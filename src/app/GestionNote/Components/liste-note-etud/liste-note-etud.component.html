@@ -1,0 +1,67 @@
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <dl class="row">
+            <dt class="col-sm-4 text-bold">CIN</dt>
+            <dd class="col-sm-8">BM33702</dd>
+            <dt class="col-sm-4 text-bold" title="CNE">CNE</dt>
+            <dd class="col-sm-8">R137710519</dd>
+            <dt class="col-sm-4 text-bold" title="Nom">Nom</dt>
+            <dd class="col-sm-8">EL MEHDI</dd>
+            <dt class="col-sm-4 text-bold" title="Prénom">Prénom</dt>
+            <dd class="col-sm-8">RIDA</dd>
+          </dl>
+        </div>
+        <div class="col-md-6">
+          <dl class="row">
+            <dt class="col-sm-4 text-bold" title="Code Apogée">Code Apogée</dt>
+            <dd class="col-sm-8">17015064</dd>
+            <dt class="col-sm-4 text-bold" title="Date">Date</dt>
+            <dd class="col-sm-8">27 sept. 1999</dd>
+            <dt class="col-sm-4 text-bold" title="Ville">Ville</dt>
+            <dd class="col-sm-8">CASABLANCA</dd>
+            <dt class="col-sm-4 text-bold" title="Civilité">Civilité</dt>
+            <dd class="col-sm-8">Monsieur</dd>
+            <dt class="col-sm-4 text-bold" title="Nationalité">Nationalité</dt>
+            <dd class="col-sm-8">MAROC</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid">
+  <table class="table table-striped table-bordered">
+    <thead class="bg-primary">
+    <tr>
+      <th colspan="3">Finale</th>
+      <th colspan="4">Module</th>
+    </tr>
+    <tr>
+      <th>Filiere</th>
+      <th>Note totale</th>
+      <th>Résultat finale</th>
+      <th>Module</th>
+      <th>Note</th>
+      <th>Rés</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let note of notes; let i = index">
+      <tr>
+        <td *ngIf="i === 0" [attr.rowspan]="notes.length">{{ note.student.filier.name }}</td>
+        <td *ngIf="i === 0" [attr.rowspan]="notes.length">{{ calculateTotalNote() }}</td>
+        <td *ngIf="i === 0" [attr.rowspan]="notes.length">{{ calculateResult() }}</td>
+        <td>{{ note.module.name }}</td>
+        <td>{{ note.note }}</td>
+        <td *ngIf="note.note >= 10">Validé</td>
+        <td *ngIf="note.note < 10">Non Validé</td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+</div>
