@@ -13,28 +13,39 @@ import { ListeinscriptionComponent } from './GestionInscription/Components/liste
 import {ModulesComponent} from "./GestionStudent/Components/modules/modules.component";
 import {EditModuleComponent} from "./GestionStudent/Components/modules/edit-module/edit-module.component";
 import {ListeNoteEtudComponent} from "./GestionNote/Components/liste-note-etud/liste-note-etud.component";
+import {DefaultLayoutComponent} from "./containers";
+import {HomeComponent} from "./GeneralComponents/main/home/home.component";
+import {CounterComponent} from "./GeneralComponents/main/counter/counter.component";
+import {MotDComponent} from "./GeneralComponents/main/mot-d/mot-d.component";
+import {DepComponent} from "./GeneralComponents/main/dep/dep.component";
 
 
 const routes: Routes = [
-  {path: "notes",component :ListenotesComponent
-    /*, canActivate : [AuthGuard],data : {
-      roles :['USER','ADMIN']
-    }*/
-  },
-  {path: "addNote",component :AddnoteComponent
-   /* , canActivate : [AuthGuard],data : {
-      roles :['ADMIN','USER']
-    }*/
-  },
-  {path : "etudiants", component : StudentsComponent},
-  {path: "inscription",component : InscriptionComponent},
-  {path: "listeinscription", component: ListeinscriptionComponent},
-  {path: "inscription-students", component: InscriptionStudentsComponent},
-  {path : "filieres", component : FilieresComponent},
-  {path : "modules", component : ModulesComponent},
-  {path : "editFiliere/:id", component : EditFiliereComponent},
-  {path : "editModule/:id", component : EditModuleComponent},
-  {path: "notesEtd",component : ListeNoteEtudComponent}
+
+  {path : '' , component : HomeComponent},
+  {path : 'chiffres' , component : CounterComponent},
+  {path : 'mot' ,component : MotDComponent},
+  {path : 'deparetement' ,component : DepComponent},
+
+
+
+      {path: "notes",component :ListenotesComponent
+        /*, canActivate : [AuthGuard],data : {
+          roles :['USER','ADMIN']
+        }*/
+      },
+      {path: "addNote",component :AddnoteComponent
+      },
+      {path : "etudiants", component : StudentsComponent},
+      {path: "inscription",component : InscriptionComponent},
+      {path: "listeinscription", component: ListeinscriptionComponent},
+      {path: "inscription-students", component: InscriptionStudentsComponent},
+      {path : "filieres", component : FilieresComponent},
+      {path : "modules", component : ModulesComponent},
+      {path : "editFiliere/:id", component : EditFiliereComponent},
+      {path : "editModule/:id", component : EditModuleComponent},
+      {path: "notesEtd",component : ListeNoteEtudComponent},
+
 
 ];
 

@@ -1,0 +1,47 @@
+<!--<c-header class="mb-4 d-print-none" position="sticky">-->
+<ng-container>
+  <c-container [fluid]="true">
+    <button
+      toggle="visible"
+      cHeaderToggler
+      [cSidebarToggle]="sidebarId"
+      class="ps-1">
+      <svg cIcon
+        name="cilMenu"
+        size="lg"
+      ></svg>
+    </button>
+    <c-header-nav class="d-none d-lg-flex">
+      <c-nav-item>
+        <a  *ngIf="securityService.profile ; else loginTemplate">
+          {{securityService.profile.firstName}}
+        </a>
+        <ng-template #loginTemplate>
+          <a class="btn nav-link" aria-current="page" (click)="login()">Login</a>
+        </ng-template>
+      </c-nav-item>
+      <c-nav-item>
+        <li class="nav-item dropdown" *ngIf="securityService.profile">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" (click)="onLogout()">Logout</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+          </ul>
+        </li>
+      </c-nav-item>
+      <c-nav-item>
+        <a routerLink="./inscription" cNavLink>
+          <button>Inscription</button>
+          </a>
+      </c-nav-item>
+    </c-header-nav>
+  </c-container>
+  <c-header-divider></c-header-divider>
+  <c-container [fluid]="true">
+    <c-breadcrumb-router class="ms-2"></c-breadcrumb-router>
+  </c-container>
+</ng-container>
+<!--</c-header>-->
+
+

@@ -8,10 +8,8 @@ import {SecurityService} from "../../SecurityKeycloak/ServiceSec/security.servic
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  modalRef: MdbModalRef<any> | null = null;
-  modalAlertRef: MdbModalRef<any> | null = null;
 
-  constructor(private modalService: MdbModalService, public securityService: SecurityService) {
+  constructor(public securityService: SecurityService) {
   };
 
 

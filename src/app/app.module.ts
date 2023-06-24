@@ -36,13 +36,47 @@ import { NavbarComponent } from './GeneralComponents/navbar/navbar.component';
 import { AddnoteComponent } from './GestionNote/Components/addnote/addnote.component';
 import { ListenotesComponent } from './GestionNote/Components/listenotes/listenotes.component';
 
-import { DatePipe } from '@angular/common';
+import {DatePipe, NgOptimizedImage} from '@angular/common';
 import { KeycloakAngularModule, KeycloakService } from "keycloak-angular";
 import { InscriptionComponent } from './GestionInscription/Components/inscription/inscription.component';
 import { ListeinscriptionComponent } from './GestionInscription/Components/listeinscription/listeinscription.component';
 import { InscriptionStudentsComponent } from './GestionInscription/Components/inscription-students/inscription-students.component';
 import { EditModuleComponent } from './GestionStudent/Components/modules/edit-module/edit-module.component';
 import {ListeNoteEtudComponent} from "./GestionNote/Components/liste-note-etud/liste-note-etud.component";
+
+import {
+  AvatarModule,
+  BadgeModule,
+  BreadcrumbModule,
+  ButtonGroupModule,
+  ButtonModule,
+  CardModule,
+  DropdownModule,
+  FooterModule,
+  FormModule,
+  GridModule,
+  HeaderModule,
+  ListGroupModule,
+  NavModule,
+  ProgressModule,
+  SharedModule,
+  SidebarModule,
+  TabsModule,
+  UtilitiesModule
+} from '@coreui/angular';
+import {DefaultFooterComponent, DefaultHeaderComponent, DefaultLayoutComponent} from './containers';
+import {NgScrollbarModule} from "ngx-scrollbar";
+import {IconModule, IconSetService} from "@coreui/icons-angular";
+import { CounterComponent } from './GeneralComponents/main/counter/counter.component';
+import { HomeComponent } from './GeneralComponents/main/home/home.component';
+import { MotDComponent } from './GeneralComponents/main/mot-d/mot-d.component';
+import { DepComponent } from './GeneralComponents/main/dep/dep.component';
+
+const APP_CONTAINERS = [
+  DefaultFooterComponent,
+  DefaultLayoutComponent,
+  DefaultHeaderComponent
+];
 // declancher keyclock
 export  function kcFactory( keycloakService:KeycloakService){
   return ()=>{
@@ -60,8 +94,10 @@ export  function kcFactory( keycloakService:KeycloakService){
   }
 }
 
+
 @NgModule({
   declarations: [
+    ...APP_CONTAINERS,
     AppComponent,
     AddnoteComponent,
     ListenotesComponent,
@@ -70,7 +106,6 @@ export  function kcFactory( keycloakService:KeycloakService){
     StudentsComponent,
     FilieresComponent,
     ModulesComponent,
-
     UniquePipe,
     PopupMsgComponent,
     EditNoteComponent,
@@ -79,11 +114,41 @@ export  function kcFactory( keycloakService:KeycloakService){
     ListeinscriptionComponent,
     InscriptionStudentsComponent,
     EditModuleComponent,
+    CounterComponent,
+    HomeComponent,
+    MotDComponent,
+    DepComponent,
 
     //ListeNoteEtudComponent,
 
   ],
   imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    AvatarModule,
+    BreadcrumbModule,
+    FooterModule,
+    DropdownModule,
+    GridModule,
+    HeaderModule,
+    SidebarModule,
+    IconModule,
+    NavModule,
+    ButtonModule,
+    FormModule,
+    UtilitiesModule,
+    ButtonGroupModule,
+    ReactiveFormsModule,
+    SidebarModule,
+    SharedModule,
+    TabsModule,
+    ListGroupModule,
+    ProgressModule,
+    BadgeModule,
+    ListGroupModule,
+    CardModule,
+    NgScrollbarModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -109,13 +174,15 @@ export  function kcFactory( keycloakService:KeycloakService){
 
     MatDialogModule,
     CdkDragPlaceholder,
-    KeycloakAngularModule
+    KeycloakAngularModule,
+    NgOptimizedImage,
   ],
   providers: [
     {
       provide : APP_INITIALIZER,deps : [KeycloakService],useFactory :kcFactory,multi:true
     },
-    DatePipe
+    DatePipe,
+    IconSetService,
   ],
 
   bootstrap: [AppComponent]
