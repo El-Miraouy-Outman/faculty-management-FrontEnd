@@ -1,111 +1,111 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class InscriptionService {
 
-  private baseUrl = 'http://localhost:8084/api/v1/inscription';
 
   constructor(private http: HttpClient) { }
 
   getAllFilieres(): Observable<any[]> {
-    const url = `${this.baseUrl}/allFilieres`;
+    const url = `${environment.apiInscription}/allFilieres`;
     return this.http.get<any[]>(url);
   }
 
   getFiliereById(filiereId: number): Observable<any> {
-    const url = `${this.baseUrl}/filier/${filiereId}`;
+    const url = `${environment.apiInscription}/filier/${filiereId}`;
     return this.http.get<any>(url);
   }
 
   getAllInscriptions(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/mst`);
+    return this.http.get<any[]>(`${environment.apiInscription}/mst`);
   }
 
   getAllInscriptionsDEUST(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/deust`);
+    return this.http.get<any[]>(`${environment.apiInscription}/deust`);
   }
 
   getAllInscriptionsLST(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/lst`);
+    return this.http.get<any[]>(`${environment.apiInscription}/lst`);
   }
 
   getInscriptionById(inscriptionId: number): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/${inscriptionId}`);
+    return this.http.get<any>(`${environment.apiInscription}/${inscriptionId}`);
   }
 
   createInscription(inscriptionRequest: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/mst`, inscriptionRequest);
+    return this.http.post<any>(`${environment.apiInscription}/mst`, inscriptionRequest);
   }
 
   createInscriptionDEUST(inscriptionRequest: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/deust`, inscriptionRequest);
+    return this.http.post<any>(`${environment.apiInscription}/deust`, inscriptionRequest);
   }
 
   createInscriptionLST(inscriptionRequest: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/lst`, inscriptionRequest);
+    return this.http.post<any>(`${environment.apiInscription}/lst`, inscriptionRequest);
   }
 
   updateInscription(inscriptionId: number, inscriptionRequest: any): Observable<any> {
-    return this.http.put<any>(`${this.baseUrl}/mst/${inscriptionId}`, inscriptionRequest);
+    return this.http.put<any>(`${environment.apiInscription}/mst/${inscriptionId}`, inscriptionRequest);
   }
 
   updateInscriptionDEUST(inscriptionId: number, inscriptionRequest: any): Observable<any> {
-    return this.http.put<any>(`${this.baseUrl}/deust/${inscriptionId}`, inscriptionRequest);
+    return this.http.put<any>(`${environment.apiInscription}/deust/${inscriptionId}`, inscriptionRequest);
   }
 
   updateInscriptionLST(inscriptionId: number, inscriptionRequest: any): Observable<any> {
-    return this.http.put<any>(`${this.baseUrl}/lst/${inscriptionId}`, inscriptionRequest);
+    return this.http.put<any>(`${environment.apiInscription}/lst/${inscriptionId}`, inscriptionRequest);
   }
 
   deleteInscription(inscriptionId: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${inscriptionId}`);
+    return this.http.delete<void>(`${environment.apiInscription}/${inscriptionId}`);
   }
 
   getAllAcceptedInscriptions(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/accept`);
+    return this.http.get<any[]>(`${environment.apiInscription}/accept`);
   }
 
   getAllRejectedInscriptions(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/reject`);
+    return this.http.get<any[]>(`${environment.apiInscription}/reject`);
   }
 
   getAllCanceledInscriptions(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/cancel`);
+    return this.http.get<any[]>(`${environment.apiInscription}/cancel`);
   }
 
   acceptInscription(inscriptionId: number): Observable<void> {
-    return this.http.post<void>(`${this.baseUrl}/${inscriptionId}/accept`, null);
+    return this.http.post<void>(`${environment.apiInscription}/${inscriptionId}/accept`, null);
   }
 
   rejectInscription(inscriptionId: number): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/${inscriptionId}/reject`, null);
+    return this.http.post<any>(`${environment.apiInscription}/${inscriptionId}/reject`, null);
   }
 
   cancelInscription(inscriptionId: number): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/${inscriptionId}/cancel`, null);
+    return this.http.post<any>(`${environment.apiInscription}/${inscriptionId}/cancel`, null);
   }
 
   acceptInscriptionDEUST(number: number): Observable<void> {
-    return this.http.post<void>(`${this.baseUrl}/deust/accept/${number}`, null);
+    return this.http.post<void>(`${environment.apiInscription}/deust/accept/${number}`, null);
   }
 
   acceptInscriptionLST(number: number): Observable<void> {
-    return this.http.post<void>(`${this.baseUrl}/lst/accept/${number}`, null);
+    return this.http.post<void>(`${environment.apiInscription}/lst/accept/${number}`, null);
   }
 
   acceptInscriptionMST(number: number): Observable<void> {
-    return this.http.post<void>(`${this.baseUrl}/mst/accept/${number}`, null);
+    return this.http.post<void>(`${environment.apiInscription}/mst/accept/${number}`, null);
   }
 
   deleteAllRejectedInscriptions() {
-    return this.http.delete(`${this.baseUrl}/delreject`);
+    return this.http.delete(`${environment.apiInscription}/delreject`);
   }
 
   deleteAllCanceledInscriptions() {
-    return this.http.delete(`${this.baseUrl}/delcancel`);
+    return this.http.delete(`${environment.apiInscription}/delcancel`);
   }
 }

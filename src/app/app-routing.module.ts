@@ -18,33 +18,55 @@ import {HomeComponent} from "./GeneralComponents/main/home/home.component";
 import {CounterComponent} from "./GeneralComponents/main/counter/counter.component";
 import {MotDComponent} from "./GeneralComponents/main/mot-d/mot-d.component";
 import {DepComponent} from "./GeneralComponents/main/dep/dep.component";
+import {AuthGuard} from "./SecurityKeycloak/security.guard";
 
 
 const routes: Routes = [
 
-  {path : '' , component : HomeComponent},
-  {path : 'chiffres' , component : CounterComponent},
-  {path : 'mot' ,component : MotDComponent},
-  {path : 'deparetement' ,component : DepComponent},
-
+     {path : '' , component : HomeComponent},
+     {path : 'chiffres' , component : CounterComponent},
+     {path : 'mot' ,component : MotDComponent},
+     {path : 'deparetement' ,component : DepComponent},
 
 
       {path: "notes",component :ListenotesComponent
-        /*, canActivate : [AuthGuard],data : {
-          roles :['USER','ADMIN']
-        }*/
+        , canActivate : [AuthGuard],data : {
+          roles :['ADMIN']
+        }
       },
       {path: "addNote",component :AddnoteComponent
+        , canActivate : [AuthGuard],data : {
+          roles :['ADMIN']
+        }
       },
-      {path : "etudiants", component : StudentsComponent},
+      {path : "etudiants", component : StudentsComponent
+        , canActivate : [AuthGuard],data : {
+          roles :['ADMIN']
+        }},
       {path: "inscription",component : InscriptionComponent},
-      {path: "listeinscription", component: ListeinscriptionComponent},
-      {path: "inscription-students", component: InscriptionStudentsComponent},
+      {path: "listeinscription", component: ListeinscriptionComponent
+        , canActivate : [AuthGuard],data : {
+          roles :['ADMIN']
+        }},
+      {path: "inscription-students", component: InscriptionStudentsComponent
+        , canActivate : [AuthGuard],data : {
+          roles :['ADMIN']
+        }},
       {path : "filieres", component : FilieresComponent},
       {path : "modules", component : ModulesComponent},
-      {path : "editFiliere/:id", component : EditFiliereComponent},
-      {path : "editModule/:id", component : EditModuleComponent},
-      {path: "notesEtd",component : ListeNoteEtudComponent},
+      {path : "editFiliere/:id", component : EditFiliereComponent
+        , canActivate : [AuthGuard],data : {
+          roles :['ADMIN']
+        }},
+      {path : "editModule/:id", component : EditModuleComponent
+        , canActivate : [AuthGuard],data : {
+          roles :['ADMIN']
+        }},
+      {path: "notesEtd",component : ListeNoteEtudComponent
+        , canActivate : [AuthGuard],data : {
+          roles :['USER','ADMIN','user']
+        }
+        },
 
 
 ];

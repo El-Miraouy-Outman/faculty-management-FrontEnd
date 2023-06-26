@@ -5,6 +5,7 @@ export  const environment = {
   apiModule:"http://localhost:8081/api/moduleFs",
   apiStudent:"http://localhost:8081/api/students",
   apiInscription : "http://localhost:8084/api/v1/inscription",
+  userNameCurrent:!String
 };
 
 
