@@ -9,16 +9,14 @@
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" routerLink="/etudiants"><i class="bi bi-people"> </i> La liste des etudiants</a>
           </li>
-          <li><a class="dropdown-item" routerLink="/filieres"><i class="bi bi-caret-down-square"> </i> La liste des
-            filieres</a></li>
+          <li><a class="dropdown-item" routerLink="/filieres"><i class="bi bi-caret-down-square"> </i> La liste des filieres</a></li>
           <li><a class="dropdown-item" routerLink="/modules"><i class="bi bi-list"> </i> La liste des modules</a></li>
         </ul>
       </li>
 
       <!-- gestion inscription -->
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Gestion Des
-          Inscriptions</a>
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Gestion Des Inscriptions</a>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" routerLink="/listeinscription">Liste Inscriptions</a></li>
           <li><a class="dropdown-item" routerLink="/inscription-students">Liste Inscriptions Etudiant</a></li>
@@ -54,18 +52,18 @@
 
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" *ngIf="securityService.profile ; else loginTemplate">
-          {{securityService.profile.firstName}}
+        <a class="nav-link" *ngIf=" loginTemplate">
+          {{"hhhhhh"}}
         </a>
         <ng-template #loginTemplate>
-          <a class="btn nav-link" aria-current="page" (click)="login()">Login</a>
+          <a class="btn nav-link" aria-current="page" >Login</a>
         </ng-template>
       </li>
-      <li class="nav-item dropdown" *ngIf="securityService.profile">
+      <li class="nav-item dropdown" >
         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li><a class="dropdown-item" (click)="onLogout()">Logout</a></li>
+          <li><a class="dropdown-item" >Logout</a></li>
           <li><a class="dropdown-item" href="#">Profile</a></li>
         </ul>
       </li>

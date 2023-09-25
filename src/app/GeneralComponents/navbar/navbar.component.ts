@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
-import {SecurityService} from "../../SecurityKeycloak/ServiceSec/security.service";
+import {FormBuilder} from "@angular/forms";
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {LoginComponent} from "../../login/login.component";
 
 @Component({
   selector: 'navbar',
@@ -9,18 +11,22 @@ import {SecurityService} from "../../SecurityKeycloak/ServiceSec/security.servic
 })
 export class NavbarComponent {
 
-  constructor(public securityService: SecurityService) {
-  };
+  constructor(
+    //public securityService: SecurityService
+  private formBuilder : FormBuilder,
+  private modal: NgbModal) {};
 
+  login(row:any){
+    console.log(row);
+    const dialogRef = this.modal.open(LoginComponent, {
+      size: "xl",
+      backdrop: 'static',
+      keyboard: false,
+    });
 
-  async login() {
-    console.log("heelo authh");
-    await this.securityService.kcService.login({
-      redirectUri: window.location.origin
-    })
+    //console.log(data.operation)
+
   }
 
-  async onLogout() {
-    this.securityService.kcService.logout(window.location.origin)
-  }
+
 }

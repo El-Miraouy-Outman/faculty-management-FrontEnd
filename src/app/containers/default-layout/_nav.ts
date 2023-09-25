@@ -50,7 +50,11 @@ export const navItems: INavData[] = [
     name: 'Gestion Des Inscriptions',
     iconComponent: { name: 'cil-pen' },
     children: [
+
       {
+        name: ' Inscriptions',
+        url: '/inscription',
+      },{
         name: 'Liste Inscriptions',
         url: '/listeinscription',
       },

@@ -67,6 +67,7 @@ export class ListenotesComponent implements OnInit{
   onFiliereChange(selectedFiliere: any) {
     this.selectedF=selectedFiliere
     this.optionsModules=this.selectedF['modules']
+
   }
 
   onModuleChange(selectedModule: any) {

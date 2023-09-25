@@ -2,8 +2,8 @@ import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { ClassToggleService, HeaderComponent } from '@coreui/angular';
-import {SecurityService} from "../../../SecurityKeycloak/ServiceSec/security.service";
 import {environment} from "../../../../environments/environment";
+import {AuthService} from "../../../login/serviceAuth/auth.service";
 
 @Component({
   selector: 'app-default-header',
@@ -13,22 +13,19 @@ export class DefaultHeaderComponent extends HeaderComponent {
 
   @Input() sidebarId: string = "sidebar";
 
+  profile: string = "";
 
-  constructor(public securityService: SecurityService) {
+  constructor() {
     super();
   }
 
 
-  async login() {
-    console.log("heelo authh");
-    await this.securityService.kcService.login({
-      redirectUri: window.location.origin
+  protected readonly environment = environment;
 
-    })
-    console.log( 'name of user'+ this.securityService.profile?.firstName);
-  }
 
-  async onLogout() {
-    this.securityService.kcService.logout(window.location.origin)
+  onLogout() {
+    console.log("hello");
+    environment.profileName=undefined;
+    environment.isAuthenticated =false;
   }
 }

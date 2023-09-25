@@ -13,7 +13,7 @@ export class StudentServicesService {
 
   constructor(private httpClient: HttpClient) { }
   getStudentsList():Observable<Student1[]>{
-    return this.httpClient.get<Student1[]>(`${environment.apiStudent}/getStudents`)
+    return this.httpClient.get<Student1[]>(`${environment.apiStudent}`)
 }
 
 public updateStudent(id:any ,Student1: any){

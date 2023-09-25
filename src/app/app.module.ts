@@ -6,7 +6,7 @@ import { MatDialogModule} from '@angular/material/dialog';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { HttpClientModule } from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
@@ -71,6 +71,8 @@ import { CounterComponent } from './GeneralComponents/main/counter/counter.compo
 import { HomeComponent } from './GeneralComponents/main/home/home.component';
 import { MotDComponent } from './GeneralComponents/main/mot-d/mot-d.component';
 import { DepComponent } from './GeneralComponents/main/dep/dep.component';
+import { LoginComponent } from './login/login.component';
+import {AppHttpInterceptor} from "./login/interceptors/app-http.interceptor";
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
@@ -78,21 +80,7 @@ const APP_CONTAINERS = [
   DefaultHeaderComponent
 ];
 // declancher keyclock
-export  function kcFactory( keycloakService:KeycloakService){
-  return ()=>{
-    keycloakService.init({
-      config : {
-        realm : "note-realm",
-        clientId : "note-client",
-        url : "http://localhost:8080"
-      },
-      initOptions :{
-        onLoad : "check-sso",
-        checkLoginIframe : true
-      }
-    })
-  }
-}
+
 
 
 @NgModule({
@@ -118,6 +106,7 @@ export  function kcFactory( keycloakService:KeycloakService){
     HomeComponent,
     MotDComponent,
     DepComponent,
+    LoginComponent,
 
     //ListeNoteEtudComponent,
 
@@ -178,11 +167,9 @@ export  function kcFactory( keycloakService:KeycloakService){
     NgOptimizedImage,
   ],
   providers: [
-    {
-      provide : APP_INITIALIZER,deps : [KeycloakService],useFactory :kcFactory,multi:true
-    },
     DatePipe,
     IconSetService,
+    {provide : HTTP_INTERCEPTORS,useClass :AppHttpInterceptor,multi:true }
   ],
 
   bootstrap: [AppComponent]
